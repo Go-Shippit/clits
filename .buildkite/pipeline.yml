@@ -1,0 +1,16 @@
+template: &node_template
+  plugins:
+    - docker#v5.6.0:
+        image: node:18
+        environment:
+          - SHIPPIT_NPM_AUTH_TOKEN
+
+steps:
+  - label: ":cop: :boom: Publishing to Registry"
+    branches: master
+    commands:
+      - yarn install
+      - yarn build
+      - yarn publish from-package --git-head ${BUILDKITE_COMMIT} --yes
+    concurrency: 1
+    <<: *node_template
