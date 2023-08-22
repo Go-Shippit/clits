@@ -11,5 +11,5 @@ steps:
     commands:
       - yarn install
       - yarn build
-      - yarn publish
+      - npm publish
     <<: *node_template
