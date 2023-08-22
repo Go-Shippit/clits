@@ -11,5 +11,5 @@ steps:
     commands:
       - yarn install
       - yarn build
-      - yarn publish from-package --git-head ${BUILDKITE_COMMIT} --yes
+      - yarn publish
     <<: *node_template
